@@ -7,7 +7,7 @@ const db = require('../db');
     const name = 'System Administrator Default User';
     const email = 'admin@example.com';
     const address = 'HQ';
-    const rawPass = 'Admin@123'; // meets policy
+    const rawPass = 'Admin@123';
 
     const hash = await bcrypt.hash(rawPass, 12);
 
