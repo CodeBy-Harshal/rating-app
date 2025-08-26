@@ -2,10 +2,15 @@ const express = require("express");
 const router = express.Router();
 const ratingController = require("../controllers/ratingController");
 
-// Get all ratings (with user + store)
+const { authenticateJWT } = require("../middlewares/authMiddleware");
+
+// Get all ratings for checking in postman
 router.get("/", ratingController.getRatings);
 
-// Create new rating
-router.post("/", ratingController.createRating);
+// Create new rating also he can update it (authenticated)
+router.post("/", authenticateJWT, ratingController.createRating);
+
+// Update rating (only user that give rating can update)
+router.put("/:id", authenticateJWT, ratingController.updateRating);
 
 module.exports = router;

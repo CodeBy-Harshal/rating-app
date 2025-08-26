@@ -3,18 +3,18 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 const { authenticateJWT, authorizeRole } = require("../middlewares/authMiddleware");
 
-// Admin JWT & role protection
+// Protect all admin routes
 router.use(authenticateJWT, authorizeRole("ADMIN"));
 
 // Dashboard
 router.get("/dashboard", adminController.getDashboard);
 
-// Users management
+// Users
 router.post("/users", adminController.addUser);
 router.get("/users", adminController.listUsers);
 router.get("/users/:userId", adminController.getUserDetails);
 
-// Stores management
+// Stores
 router.post("/stores", adminController.addStore);
 router.get("/stores", adminController.listStores);
 

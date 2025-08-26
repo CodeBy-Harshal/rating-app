@@ -1,15 +1,56 @@
 const { User, Store, Rating } = require("../models");
 
-// Get all users with their stores + ratings
+
+// Get all stores (for normal user role)
 exports.getUsers = async (req, res, next) => {
   try {
-    const users = await User.findAll({
+    const stores = await Store.findAll({
+      attributes: ["id", "name", "address"],   // fetch only what’s needed
       include: [
-        { model: Store, as: "stores", attributes: ["id", "name", "email"] },
-        { model: Rating, as: "ratings", attributes: ["id", "score"] },
+        {
+          model: Rating,
+          as: "ratings",
+          attributes: ["id", "score", "userId"]
+        },
+        {
+          model: User,
+          as: "owner",
+          attributes: ["id", "name", "email"]  // optional → show store owner info
+        }
       ],
     });
-    res.json(users);
+
+    // ✅ Transform each store’s data
+    const result = stores.map(store => {
+  const ratings = store.ratings || [];
+
+  // overall rating
+  const overall =
+    ratings.length > 0
+      ? ratings.reduce((acc, r) => acc + r.score, 0) / ratings.length
+      : null;
+
+  // current logged-in user’s rating
+  const userRatingObj = ratings.find(r => r.userId === req.user.id);
+
+  return {
+    id: store.id,
+    name: store.name,
+    address: store.address,
+    overallRating: overall,
+    userRating: userRatingObj ? userRatingObj.score : null,
+    userRatingId: userRatingObj ? userRatingObj.id : null,
+    owner: store.owner
+      ? {
+          id: store.owner.id,
+          name: store.owner.name,
+          email: store.owner.email,
+        }
+      : null,
+  };
+});
+
+    res.json(result);
   } catch (err) {
     next(err);
   }
@@ -31,3 +72,5 @@ exports.getUserById = async (req, res, next) => {
     next(err);
   }
 };
+
+

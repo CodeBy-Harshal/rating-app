@@ -12,4 +12,7 @@ router.post("/login", authController.login);
 // Update password (logged-in users)
 router.put("/update-password", authenticateJWT, authController.updatePassword);
 
+// Get current authenticated user
+router.get("/me", authenticateJWT, authController.getMe);
+
 module.exports = router;
