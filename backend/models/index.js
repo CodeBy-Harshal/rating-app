@@ -1,12 +1,11 @@
-// models/index.js
 const sequelize = require("../config/db");
 const User = require("./User");
 const Store = require("./Store");
 const Rating = require("./Rating");
 
-// ================== Associations ==================
+// Associations
 
-// User ↔ Store (One-to-Many)
+// User <-> Store (One-to-Many)
 User.hasMany(Store, {
   as: "stores",
   foreignKey: "ownerId",
@@ -17,7 +16,7 @@ Store.belongsTo(User, {
   foreignKey: "ownerId",
 });
 
-// User ↔ Rating (One-to-Many)
+// User <-> Rating (One-to-Many)
 User.hasMany(Rating, {
   as: "ratings",
   foreignKey: "userId",
@@ -28,7 +27,7 @@ Rating.belongsTo(User, {
   foreignKey: "userId",
 });
 
-// Store ↔ Rating (One-to-Many)
+// Store <-> Rating (One-to-Many)
 Store.hasMany(Rating, {
   as: "ratings",
   foreignKey: "storeId",
@@ -39,7 +38,6 @@ Rating.belongsTo(Store, {
   foreignKey: "storeId",
 });
 
-// ================== Export ==================
 module.exports = {
   sequelize,
   User,

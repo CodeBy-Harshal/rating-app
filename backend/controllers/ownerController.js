@@ -1,6 +1,6 @@
 const { Store, Rating, User } = require("../models");
 
-// Dashboard for store owner
+// Store Owner Dashboard
 exports.getDashboard = async (req, res) => {
   try {
     const store = await Store.findOne({

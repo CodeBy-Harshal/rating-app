@@ -77,9 +77,9 @@ const CreateUserPage = () => {
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
-          <option value="USER">Normal User</option>
-          <option value="STORE_OWNER">Store Owner</option>
-          <option value="ADMIN">Admin</option>
+          <option value="user">Normal User</option>
+          <option value="owner">Store Owner</option>
+          <option value="admin">Admin</option>
         </select>
 
         <button

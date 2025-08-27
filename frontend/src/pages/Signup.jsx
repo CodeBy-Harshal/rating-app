@@ -19,8 +19,7 @@ const Signup = () => {
     if (address.length > 400)
       throw new Error("Address cannot exceed 400 characters");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email))
-      throw new Error("Invalid email format");
+    if (!emailRegex.test(email)) throw new Error("Invalid email format");
     const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,16}$/;
     if (!passwordRegex.test(password))
       throw new Error(
@@ -44,53 +43,60 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-2xl shadow-md w-96 space-y-4"
-      >
-        <h2 className="text-xl font-bold text-center">Signup</h2>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        {success && <p className="text-green-600 text-sm">{success}</p>}
-        
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="w-full p-2 border rounded"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <textarea
-          placeholder="Address"
-          className="w-full p-2 border rounded"
-          rows="3"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 border rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
-          Signup
-        </button>
-        <p className="text-sm text-center">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+      <div className="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl w-96">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Create Account ✨
+        </h2>
+
+        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+        {success && <p className="text-green-600 text-sm text-center mb-4">{success}</p>}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Full Name"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <textarea
+            placeholder="Address"
+            rows="3"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button
+            type="submit"
+            className="w-full py-2 rounded-lg text-white font-medium transition-transform transform hover:scale-[1.02] shadow-md bg-green-500 hover:bg-green-600"
+          >
+            Signup
+          </button>
+        </form>
+
+        <p className="text-sm text-center mt-4 text-gray-600">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500">
+          <Link to="/login" className="text-blue-600 font-medium hover:underline">
             Login
           </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 };

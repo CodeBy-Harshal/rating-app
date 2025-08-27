@@ -10,7 +10,7 @@ router.get("/", ratingController.getRatings);
 // Create new rating also he can update it (authenticated)
 router.post("/", authenticateJWT, ratingController.createRating);
 
-// Update rating (only user that give rating can update)
+// Update rating (only user that give rating can update) not used in frontend as post rating works for update rating
 router.put("/:id", authenticateJWT, ratingController.updateRating);
 
 module.exports = router;

@@ -6,7 +6,7 @@ const { authenticateJWT, authorizeRole } = require("../middlewares/authMiddlewar
 // Owner JWT & role protection
 router.use(authenticateJWT, authorizeRole("OWNER"));
 
-// Dashboard
+// Owner Dashboard
 router.get("/dashboard", ownerController.getDashboard);
 
 module.exports = router;

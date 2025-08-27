@@ -5,7 +5,7 @@ const { User, Store, Rating } = require("../models");
 exports.getUsers = async (req, res, next) => {
   try {
     const stores = await Store.findAll({
-      attributes: ["id", "name", "address"],   // fetch only what’s needed
+      attributes: ["id", "name", "address"],
       include: [
         {
           model: Rating,
@@ -15,12 +15,12 @@ exports.getUsers = async (req, res, next) => {
         {
           model: User,
           as: "owner",
-          attributes: ["id", "name", "email"]  // optional → show store owner info
+          attributes: ["id", "name", "email"]
         }
       ],
     });
 
-    // ✅ Transform each store’s data
+    // Transform each store’s data
     const result = stores.map(store => {
   const ratings = store.ratings || [];
 

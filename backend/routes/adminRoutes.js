@@ -15,7 +15,7 @@ router.get("/users", adminController.listUsers);
 router.get("/users/:userId", adminController.getUserDetails);
 
 // Stores
-router.post("/stores", adminController.addStore);
+router.post("/stores",  adminController.addStore);
 router.get("/stores", adminController.listStores);
 
 module.exports = router;

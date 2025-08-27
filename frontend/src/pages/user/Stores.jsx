@@ -1,15 +1,14 @@
-// src/pages/Stores.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Stores = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState(""); // 🔹 Search filter
+  const [filter, setFilter] = useState(""); // Search filter
 
   const token = localStorage.getItem("token");
 
-  // 🔹 Fetch stores from backend
+  // Fetch stores from backend
   const fetchStores = async () => {
     try {
       setLoading(true);
@@ -25,7 +24,7 @@ const Stores = () => {
     }
   };
 
-  // 🔹 Handle rating submission
+  // Handle rating submission
   const handleRating = async (storeId, score) => {
     try {
       await axios.post(
@@ -51,7 +50,7 @@ const Stores = () => {
     fetchStores();
   }, []);
 
-  // 🔹 Filtered stores based on name or address
+  // Filtered stores based on name or address
   const filteredStores = stores.filter(
     (store) =>
       store.name.toLowerCase().includes(filter.toLowerCase()) ||
@@ -65,7 +64,7 @@ const Stores = () => {
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Store Listings</h1>
 
-      {/* 🔹 Filter Bar */}
+      {/* Filter Bar */}
       <input
         type="text"
         placeholder="Search by store name or address..."

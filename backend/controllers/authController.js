@@ -62,7 +62,7 @@ exports.updatePassword = async (req, res) => {
 exports.getMe = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {
-      attributes: ["id", "name", "email", "address", "role"], // exclude password
+      attributes: ["id", "name", "email", "address", "role"],
     });
 
     if (!user) return res.status(404).json({ message: "User not found" });

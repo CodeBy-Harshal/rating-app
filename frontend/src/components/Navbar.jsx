@@ -14,10 +14,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 text-white p-4 flex justify-between items-center shadow-md">
-      <div className="text-xl font-bold">⭐ Roxiler Ratings</div>
+      <div className="text-xl font-bold">⭐ Store Ratings</div>
       
       <div className="flex gap-6 items-center">
-        {/* Role greeting */}
+        {/* Role Greeting */}
         {user && (
           <span className="mr-4 font-semibold">
             {user.role}: Hello {user.name}

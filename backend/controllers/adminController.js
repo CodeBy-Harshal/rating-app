@@ -1,7 +1,7 @@
 const { User, Store, Rating } = require("../models");
 const bcrypt = require("bcrypt");
 
-// Dashboard
+// Admin Dashboard
 exports.getDashboard = async (req, res) => {
   try {
     const totalUsers = await User.count();
@@ -94,7 +94,7 @@ exports.listUsers = async (req, res) => {
         averageScore: avgScore,
       };
 
-      delete user.stores; // don’t return stores list
+      delete user.stores;
       return user;
     });
 
@@ -142,12 +142,22 @@ exports.getUserDetails = async (req, res) => {
 };
 
 
-// ================= Store Management =================
 // Add new store
 exports.addStore = async (req, res) => {
   try {
     const { name, email, address, ownerId } = req.body;
-    if (!name || !ownerId) return res.status(400).json({ message: "Missing required fields" });
+    if (!name || !ownerId) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const owner = await User.findByPk(ownerId);
+    if (!owner) {
+      return res.status(404).json({ message: "Owner not found" });
+    }
+
+    if (owner.role.toLowerCase() !== "owner") {
+      return res.status(400).json({ message: "Only users with role 'owner' can have stores" });
+    }
 
     const store = await Store.create({ name, email, address, ownerId });
     res.status(201).json({ message: "Store added successfully", storeId: store.id });
@@ -155,6 +165,7 @@ exports.addStore = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 // List stores with filters + owner + ratings
 exports.listStores = async (req, res) => {
