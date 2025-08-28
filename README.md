@@ -1,9 +1,9 @@
-⭐ Rating App
+## ⭐ Rating App
 
 A role-based rating system where Admins manage, Owners track feedback, and Users rate stores seamlessly.
 
 
-🚀 Features:
+## 🚀 Features:
 
     🔐 Authentication & Security
     
@@ -13,7 +13,7 @@ A role-based rating system where Admins manage, Owners track feedback, and Users
     
     Passwords hashed with bcrypt
 
-👥 Role Management:
+## 👥 Role Management:
 
     Access and actions are role-based (Admin, Owner, User)
     
@@ -22,17 +22,17 @@ A role-based rating system where Admins manage, Owners track feedback, and Users
     Owner	View ratings & averages for their store(s)
     User	Browse/search stores, add/update/delete ratings
 
-📊 Store Features:
+## 📊 Store Features:
 
     Store list with sorting & filtering
     
     Owners see who rated their stores
 
-📱 UI/UX:
+## 📱 UI/UX:
 
     Responsive design with Tailwind CSS
 
-🛠 Tech Stack:
+## 🛠 Tech Stack:
 
     Frontend: React (Vite), Tailwind CSS, React Router, Axios
     
@@ -40,7 +40,7 @@ A role-based rating system where Admins manage, Owners track feedback, and Users
 
     Database: MySQL
 
-⚡ Quick Start:
+## ⚡ Quick Start:
     🔧 Prerequisites
     
     Node.js (v18+ recommended)
@@ -50,7 +50,7 @@ A role-based rating system where Admins manage, Owners track feedback, and Users
     Create a database (e.g. rating_app)
 
 
-Create .env file:
+## Create .env file:
 
     PORT=5000
     DB_HOST=localhost
@@ -61,7 +61,7 @@ Create .env file:
     CORS_ORIGIN=http://localhost:5173
 
 
-Navigate to backend folder:
+## Navigate to backend folder:
 
     cd backend
     npm install
@@ -69,7 +69,7 @@ Navigate to backend folder:
     
     Open in browser: http://localhost:3000
 
-Navigate to frontend folder:
+## Navigate to frontend folder:
 
     cd frontend
     npm install
@@ -77,7 +77,7 @@ Navigate to frontend folder:
     
     Open in browser: http://localhost:5173
 
-🧪 Test Accounts:
+## 🧪 Test Accounts:
 
     For quick testing, create users via signup/login or seed manually.
     
@@ -89,7 +89,7 @@ Navigate to frontend folder:
     
     User: user@demo.com / user123
 
-📝 Notes:
+## 📝 Notes:
 
     Ensure CORS_ORIGIN matches your frontend URL.
     
@@ -97,19 +97,24 @@ Navigate to frontend folder:
     
     Sequelize auto-syncs models on start (dev mode).
 
-📸 Screenshots
+## 📸 Screenshots
 
-Login Page
+## Login Page
+
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/51ba83ec-657f-4f36-af30-d42f1f16cfbe" />
 
-Signup Page
+## Signup Page
+
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/566d1316-81ac-4473-8b75-91202058e175" />
 
-Admin Page
+## Admin Page
+
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/2ad7f31d-8498-40c6-8b12-fc5426d56ea3" />
 
-Store Owner Page
+## Store Owner Page
+
 <img width="1920" height="1080" src="https://github.com/user-attachments/assets/1a05e9b4-d0db-4d08-8c47-752d71015230" />
 
-User Page
-<img width="1920" height="1080" src="https://github.com/user-attachments/assets/4d89515d-5f0a-403b-975e-e6edf4030814" />
+## User Page
+<img width="1920" height="1080" alt="Screenshot 2025-08-28 075311" src="https://github.com/user-attachments/assets/ba20b7ad-b317-4430-a589-649fd0d6e783" />
+
